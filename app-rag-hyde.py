@@ -9,9 +9,10 @@ from pypdf import PdfReader
 # ⚙️ Configurations
 # -----------------------------------------------------
 PDF_FILE_PATH = os.path.join("data", "brain_facts_book.pdf")
-OPENROUTER_MODEL = "google/gemma-3-27b-it:free"
-CHROMA_STORAGE_PATH = "chroma_persistent_storage"
+CHROMA_STORAGE_PATH = "chroma_persistent_storage_hyde"
 COLLECTION_NAME = "neuroscience_rag_collection"
+OPENROUTER_MODEL = "google/gemma-3-27b-it:free"
+EMBEDDINGS_MODEL = "all-MiniLM-L6-v2"
 
 # Load environment variables from .env file
 load_dotenv()
@@ -29,7 +30,7 @@ client = OpenAI(
 # Initialize local SentenceTransformer Embedding Function
 # This model will run locally on your laptop
 local_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name="all-MiniLM-L6-v2"
+    model_name=EMBEDDINGS_MODEL
 )
 
 # Initialize the Chroma client with persistence
