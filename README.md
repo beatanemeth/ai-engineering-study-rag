@@ -12,15 +12,30 @@ The project began with foundational learning:
 
 - A key resource for RAG basics was a [video on RAG bases](https://www.youtube.com/watch?v=ea2W8IogX80), which provided the theoretical framework for the hands-on practice in this project.
 
-### Key Learning Goals 🎯
+Building on this foundational knowledge and successful _LangChain experimentation_ —[AI Engineering - Study LangChain]() —, the project **evolved into a solution for a real-world use case**, which is detailed in the separate repository: [AI Engineering - Custom Wix Data Chat]().
 
-The core purpose of this project was to achieve three objectives:
+<br></br>
 
-- **Understand RAG**: Define and comprehend the core concepts of Retrieval-Augmented Generation.
+## Table of Contents
 
-- **Basic RAG Steps**: Identify the fundamental stages of a RAG application (Load, Chunk, Embed, Retrieve, Generate).
+1.  [Key Learning Goals](#1-key-learning-goals-)
+2.  [RAG Architectures Implemented](#2-rag-architectures-implemented-)
+3.  [Technical Stack](#3-technical-stack-️)
+4.  [Prerequisites](#4-prerequisites-)
+5.  [Getting Started](#5-getting-started-)
+6.  [Resources](#6-resources-)
+7.  [Alternative Installation Method](#7-alternative-installation-method)
 
-- **Vector Databases**: Gain practical experience with storing and querying embeddings in a persistent vector database.
+<br></br>
+
+## 1. Key Learning Goals 🎯
+
+The core purpose of this project was to achieve the following objectives:
+
+- **Fundamentals of RAG:** Understanding the core steps: Load, Chunk, Embed/Index, Retrieve, and Generate.
+- **Vector Databases:** Practical use of **ChromaDB** for persistent vector storage.
+- **Embedding Models:** Utilizing local **Sentence Transformers** (`all-MiniLM-L6-v2`) for vector creation.
+- **LLM Integration:** Connecting an external LLM via **OpenRouter** (`google/gemma-3-27b-it:free`) for the final answer generation.
 
 ### RAG Techniques Explored
 
@@ -34,35 +49,8 @@ Based on the theoretical framework, the above-mentioned video provided, it was l
 
   - **Query Expansion (Multiple Queries)**: (Explored conceptually) Uses the LLM to generate additional queries to broaden the context search.
 
-The learning process implemented two architectures in this repository: **Naive RAG** and the **HyDE RAG** (Query Expansion with generated answer).
-<br></br>
-
-## Table of Contents
-
-1.  [Project Overview & Learning Goals](#1-project-overview--learning-goals-)
-2.  [RAG Architectures Implemented](#2-rag-architectures-implemented-)
-3.  [Technical Stack](#3-technical-stack-️)
-4.  [Prerequisites](#4-prerequisites-)
-5.  [Getting Started](#5-getting-started-)
-    - [5.1. Configuration (.env)](#51-configuration-env)
-    - [5.2. Download Knowledge Base](#52-download-knowledge-base)
-    - [5.3. Setup Python Environment](#53-setup-python-virtual-environment)
-    - [5.4. Install Dependencies](#54-install-dependencies)
-    - [5.5. Run the Application](#55-run-the-application)
-6.  [RAG Flow Details](#6-rag-flow-details-️)
-
-<br></br>
-
-## 1. Project Overview & Learning Goals 🎯
-
-The primary goal of this project is to build a robust **Question-Answering (QA) system** that answers user questions grounded **only** in a specific, local knowledge base: _The Brain Facts Book_ (PDF).
-
-**Key Learning Objectives:**
-
-- **Fundamentals of RAG:** Understanding the core steps: Load, Chunk, Embed/Index, Retrieve, and Generate.
-- **Vector Databases:** Practical use of **ChromaDB** for persistent vector storage.
-- **Embedding Models:** Utilizing local **Sentence Transformers** (`all-MiniLM-L6-v2`) for vector creation.
-- **LLM Integration:** Connecting an external LLM via **OpenRouter** (`google/gemma-3-27b-it:free`) for the final answer generation.
+The learning process implemented two architectures in this repository: **Naive RAG** and the **HyDE RAG** (Query Expansion with generated answer).  
+A **Question-Answering (QA) system** was built that answers user questions grounded **only** in a specific, local knowledge base: _The Brain Facts Book_ (PDF).
 
 <br></br>
 
@@ -94,14 +82,23 @@ This repository implements two distinct RAG techniques for comparison:
 
 You must have the following installed and configured:
 
-- **Python 3.x**
-- An **OpenRouter API Key**
+- **Python 3.10.12+**
+  > ⚠️ **Version Note:** This project was developed and tested using **Python 3.10.12**. While most dependencies will work with newer versions (e.g., Python 3.11/3.12), it is recommended using Python 3.10 or a compatible version to ensure environmental stability.
+- An **OpenRouter API Key** (Set as `OPENROUTER_API_KEY` in the `.env` file).
+
+<br></br>
 
 <br></br>
 
 ## 5. Getting Started 🚀
 
-### 5.1. Configuration (`.env`)
+### 5.1. Download Knowledge Base
+
+1. Download a copy of [The Brain Facts Book](https://www.brainfacts.org/the-brain-facts-book) PDF.
+2. Name the file exactly as: `brain_facts_book.pdf`
+3. Replace the empty `brain_facts_book.pdf` file inside the project's `/data `folder with your downloaded sample.
+
+### 5.2. Configuration (`.env`)
 
 1.  In the root directory of this project, rename the `.env.example` to `.env`.
 2.  Populate the file with your OpenRouter API key:
@@ -111,12 +108,6 @@ OPENROUTER_API_KEY=sk-or-v1-Your_OpenRouter_API_Key
 ```
 
 ⚠️ **Security Tip**: Never commit your `.env` file to version control.
-
-### 5.2. Download Knowledge Base
-
-1. Download a copy of [The Brain Facts Book](https://www.brainfacts.org/the-brain-facts-book) PDF.
-2. Name the file exactly as: `brain_facts_book.pdf`
-3. Place it inside the project's `/data `folder.
 
 ### 5.3. Setup Python Virtual Environment
 
@@ -152,7 +143,13 @@ Windows (PowerShell):
 
 Your command prompt will now show the environment name, like `(.venv) user@host:~/project$`, indicating that it is active.
 
-### 5.4. Install Dependencies
+### 5.4. Update pip
+
+```Bash
+python -m pip install --upgrade pip
+```
+
+### 5.5. Install Dependencies
 
 With the virtual environment active, install all necessary packages from `requirements.txt`:
 
@@ -160,7 +157,9 @@ With the virtual environment active, install all necessary packages from `requir
 pip install -r requirements.txt
 ```
 
-### 5.5. Run the Application
+⚠️ **Troubleshooting Note**: If the command above fails with errors related to `torch` or other complex dependencies, please use the steps outlined in the [Alternative Installation Method](#7-alternative-installation-method) section below.
+
+### 5.6. Run the Application
 
 You can now run either the naive or the HyDE implementation. **The indexing phase will only run the first time** and populate the `chroma_persistent_storage` folder.
 
@@ -171,23 +170,74 @@ python3 app-rag-naive.py
 #OR
 
 # Run the HyDE RAG implementation
-python app-rag-hyde.py
+python3 app-rag-hyde.py
 ```
+
+### 5.7. Deactivate the environment
 
 When you are finished, exit the isolated environment:
 
-```Bash
+```bash
 deactivate
 ```
 
 <br></br>
 
-## 6. RAG Flow Details ⚙️
+## 6. Resources 📚
 
-Both applications follow the same fundamental three-step RAG cycle:
+[ChromaDB](https://docs.trychroma.com/docs/overview/introduction)
 
-1. **Indexing**: The PDF is loaded, split into chunks, the chunks are embedded using the local Sentence Transformer model, and finally stored in the ChromaDB collection.
+[Sentence Transformer](https://www.sbert.net/docs/sentence_transformer/pretrained_models.html)
 
-2. **Retrieval**: The query (or the HyDE answer) is embedded and searched against the Chroma index to find the top-k relevant chunks (default: 4).
+[sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
 
-3. **Generation**: The retrieved chunks (context) are concatenated and injected into a constrained prompt, instructing the LLM to answer the original question only using that provided context.
+[OpenRouterAi](https://openrouter.ai/)
+
+[AI Engineering Roadmap - By Data With Baraa](https://candle-gosling-511.notion.site/AI-Engineering-Roadmap-By-Data-With-Baraa-29734b251f12804f94a2c5ffaeee8620?p=29834b251f1280c6a6f0e6615f9d88c9&pm=s)
+<br></br>
+
+---
+
+## 7. Alternative Installation Method
+
+If you notice any troubles, errors during installing packages by running the standard command (`pip install -r requirements.txt`), please switch to the following sequential installation.
+
+Following the sequence below ensures that all major components, especially the difficult `torch` package, are installed correctly and in the right order.
+
+1. Core Utilities & Data Loading:
+
+```Bash
+pip install pypdf python-dotenv requests httpx
+```
+
+Foundational tools for networking, environment setup, and PDF processing.
+
+2. Vector Database (Chroma):
+
+```Bash
+pip install chromadb
+```
+
+Installs the latest stable ChromaDB and its dependencies (like numpy, scipy, pydantic).
+
+3. LLM Client:
+
+```Bash
+pip install openai
+```
+
+Client for interacting with OpenAI or similar services.
+
+4. PyTorch (CPU-Only):
+
+```Bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+```
+
+5. NLP Models (Embeddings):
+
+```Bash
+pip install sentence-transformers transformers
+```
+
+Installs the libraries needed to download and run embedding models (which rely on the PyTorch installed in Step 4).
