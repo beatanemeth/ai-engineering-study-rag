@@ -12,7 +12,7 @@ The project began with foundational learning:
 
 - A key resource for RAG basics was a [video on RAG bases](https://www.youtube.com/watch?v=ea2W8IogX80), which provided the theoretical framework for the hands-on practice in this project.
 
-Building on this foundational knowledge and successful _LangChain experimentation_ —[AI Engineering - Study LangChain]() —, the project **evolved into a solution for a real-world use case**, which is detailed in the separate repository: [AI Engineering - Custom Wix Data Chat]().
+Building on this foundational knowledge and successful _LangChain experimentation_ —[AI Engineering - Study LangChain](https://github.com/beatanemeth/ai-engineering-study-langchain) —, the project **evolved into a solution for a real-world use case**, which is detailed in the separate repository: [AI Engineering - Custom Wix Data Chat](https://github.com/beatanemeth/ai-engineering-custom-wix-data-chat).
 
 <br></br>
 
