@@ -1,8 +1,8 @@
-# 📚 RAG Learning Project: Naive vs. HyDE
+# RAG Learning Project: Naive vs. HyDE
 
 > A hands-on project to understand and implement two **Retrieval-Augmented Generation** (RAG) architectures: **Naive RAG** and **HyDE (Hypothetical Document Embedding)**, using a local PDF knowledge base.
 
-## Project Story & Motivation ✨
+## Project Story & Motivation
 
 This project was developed to gain practical familiarity with **AI Engineering** techniques, specifically **Retrieval-Augmented Generation** (RAG).
 
@@ -18,17 +18,17 @@ Building on this foundational knowledge and successful _LangChain experimentatio
 
 ## Table of Contents
 
-1.  [Key Learning Goals](#1-key-learning-goals-)
-2.  [RAG Architectures Implemented](#2-rag-architectures-implemented-)
-3.  [Technical Stack](#3-technical-stack-️)
-4.  [Prerequisites](#4-prerequisites-)
-5.  [Getting Started](#5-getting-started-)
-6.  [Resources](#6-resources-)
+1.  [Key Learning Goals](#1-key-learning-goals)
+2.  [RAG Architectures Implemented](#2-rag-architectures-implemented)
+3.  [Technical Stack](#3-technical-stack)
+4.  [Prerequisites](#4-prerequisites)
+5.  [Getting Started](#5-getting-started)
+6.  [Resources](#6-resources)
 7.  [Alternative Installation Method](#7-alternative-installation-method)
 
 <br></br>
 
-## 1. Key Learning Goals 🎯
+## 1. Key Learning Goals
 
 The core purpose of this project was to achieve the following objectives:
 
@@ -44,7 +44,6 @@ Based on the theoretical framework, the above-mentioned video provided, it was l
 - **Naive RAG** : The standard baseline approach where the user query is embedded directly and used for vector search.
 
 - **Advanced RAG** (Query Expansion): Techniques that modify the query before retrieval.
-
   - **Hypothetical-Document-Embedding** (HyDE): An advanced method where the LLM first generates a hypothetical answer to the query. This synthetic answer is then embedded to perform a semantically richer retrieval.
 
   - **Query Expansion (Multiple Queries)**: (Explored conceptually) Uses the LLM to generate additional queries to broaden the context search.
@@ -54,7 +53,7 @@ A **Question-Answering (QA) system** was built that answers user questions groun
 
 <br></br>
 
-## 2. RAG Architectures Implemented 🧠
+## 2. RAG Architectures Implemented
 
 This repository implements two distinct RAG techniques for comparison:
 
@@ -65,7 +64,7 @@ This repository implements two distinct RAG techniques for comparison:
 
 <br></br>
 
-## 3. Technical Stack 🛠️
+## 3. Technical Stack
 
 | Component           | Detail                                                                        | Use                                                                               |
 | :------------------ | :---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
@@ -78,19 +77,17 @@ This repository implements two distinct RAG techniques for comparison:
 
 <br></br>
 
-## 4. Prerequisites 📦
+## 4. Prerequisites
 
 You must have the following installed and configured:
 
 - **Python 3.10.12+**
-  > ⚠️ **Version Note:** This project was developed and tested using **Python 3.10.12**. While most dependencies will work with newer versions (e.g., Python 3.11/3.12), it is recommended using Python 3.10 or a compatible version to ensure environmental stability.
+  > **Version Note:** This project was developed and tested using **Python 3.10.12**. While most dependencies will work with newer versions (e.g., Python 3.11/3.12), it is recommended using Python 3.10 or a compatible version to ensure environmental stability.
 - An **OpenRouter API Key** (Set as `OPENROUTER_API_KEY` in the `.env` file).
 
 <br></br>
 
-<br></br>
-
-## 5. Getting Started 🚀
+## 5. Getting Started
 
 ### 5.1. Download Knowledge Base
 
@@ -107,7 +104,8 @@ You must have the following installed and configured:
 OPENROUTER_API_KEY=sk-or-v1-Your_OpenRouter_API_Key
 ```
 
-⚠️ **Security Tip**: Never commit your `.env` file to version control.
+**Security Tip**:  
+Never commit your `.env` file to version control.
 
 ### 5.3. Setup Python Virtual Environment
 
@@ -157,7 +155,8 @@ With the virtual environment active, install all necessary packages from `requir
 pip install -r requirements.txt
 ```
 
-⚠️ **Troubleshooting Note**: If the command above fails with errors related to `torch` or other complex dependencies, please use the steps outlined in the [Alternative Installation Method](#7-alternative-installation-method) section below.
+**Troubleshooting Note**:  
+If the command above fails with errors related to `torch` or other complex dependencies, please use the steps outlined in the [Alternative Installation Method](#7-alternative-installation-method) section below.
 
 ### 5.6. Run the Application
 
@@ -183,7 +182,7 @@ deactivate
 
 <br></br>
 
-## 6. Resources 📚
+## 6. Resources
 
 [ChromaDB](https://docs.trychroma.com/docs/overview/introduction)
 
@@ -194,9 +193,8 @@ deactivate
 [OpenRouterAi](https://openrouter.ai/)
 
 [AI Engineering Roadmap - By Data With Baraa](https://candle-gosling-511.notion.site/AI-Engineering-Roadmap-By-Data-With-Baraa-29734b251f12804f94a2c5ffaeee8620?p=29834b251f1280c6a6f0e6615f9d88c9&pm=s)
-<br></br>
 
----
+<br></br>
 
 ## 7. Alternative Installation Method
 
